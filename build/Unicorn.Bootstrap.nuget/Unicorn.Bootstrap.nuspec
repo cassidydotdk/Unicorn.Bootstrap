@@ -17,7 +17,7 @@
 	</dependencies>
 	</metadata>
 	<files>
-		<file src="..\..\src\Unicorn.Bootstrap\App_Config\Include\Unicorn.Bootstrap\Unicorn.Bootstrap.config" target="content\App_Config\Include\Unicorn.Bootstrap" />
+		<file src="..\..\src\Unicorn.Bootstrap\App_Config\Include\Unicorn.Bootstrap\Unicorn.Bootstrap.config" target="content\App_Config\Include\Unicorn.Bootstrap\Unicorn.Bootstrap.config" />
 		<file src="readme.txt" target="" />
 	</files>
 </package>

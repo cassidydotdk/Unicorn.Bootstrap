@@ -27,7 +27,7 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
                 try
                 {
                     logger.Info(string.Empty);
-                    logger.Info(configuration.Name + " is being synced. (Unicorn.Bootstrap)");
+                    logger.Info("Unicorn.Bootstrap is syncing " + configuration.Name);
 
                     // Need to check with @kamsar on this. Leaving this code in, forces a reference to sitecore.kernel
                     //using (new TransparentSyncDisabler())
