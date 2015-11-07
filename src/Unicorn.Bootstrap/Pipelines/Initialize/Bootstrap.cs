@@ -54,7 +54,7 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
 
         public virtual string[] GetConfigNames()
         {
-            throw new NotImplementedException();
+            return new string[] {};
         }
     }
 }
