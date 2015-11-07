@@ -29,15 +29,11 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
                     logger.Info(string.Empty);
                     logger.Info("Unicorn.Bootstrap is syncing " + configuration.Name);
 
-                    // Need to check with @kamsar on this. Leaving this code in, forces a reference to sitecore.kernel
-                    //using (new TransparentSyncDisabler())
-                    //{
                     var pathResolver = configuration.Resolve<PredicateRootPathResolver>();
 
                     var roots = pathResolver.GetRootSerializedItems();
 
                     helper.SyncTree(configuration, null, roots);
-                    //}
                 }
                 catch (Exception ex)
                 {
