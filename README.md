@@ -7,6 +7,7 @@ Utilising [kamsar\Unicorn](https://github.com/kamsar/Unicorn) to auto-install [S
 1. Add [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) enabled module to your solution with NuGet Package Manager.
 2. Start Sitecore
 3. Done.
+
 ### For module creators:
 1. Add a reference to [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) via NuGet Package Manager.
 2. Create a Unicorn configuration for your module and place it in `\App_Config\Include\Unicorn.Bootstrap.YourModuleName.config`. Configure the repository folder as `$(dataFolder)\Unicorn.Bootstrap\$(configurationName)`. (see example).
