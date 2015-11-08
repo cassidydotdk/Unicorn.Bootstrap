@@ -43,7 +43,7 @@ Make sure to keep your Target Data Store root folder name the same as your confi
 [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) will install itself as a processor in your `<initialize>` [Sitecore](http://www.sitecore.net) pipeline, and force a sync of all configurations found in `\Unicorn.Bootstrap\`.
 
 ### Further information
-To be fair, knowledge of how Unicorn works is probably required at this stage. I just don't have time to write a long documentation with examples and graphs and fireworks right now.
+To be fair, knowledge of how Unicorn works is probably required at this stage. I just don't have time to write a long documentation with examples, animated gifs, fireworks and memes right now.
 
 # DISCLAIMER
 Unicorn.Bootstrap is currently under **evaluation** and has been released to public for comments. Absolutely use at your own risk. Also see license.

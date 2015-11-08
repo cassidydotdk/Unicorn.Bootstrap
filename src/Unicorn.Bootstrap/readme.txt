@@ -12,11 +12,11 @@ Example:
 			<configurations>
 				<configuration name="Example Module" description="Unicorn.Bootstrap Example Module configuration">
 					<predicate type="Unicorn.Predicates.SerializationPresetPredicate, Unicorn" singleInstance="true">
-            <include database="master" path="/sitecore/system/modules/Example Module" />
+						<include database="master" path="/sitecore/system/modules/Example Module" />
 					</predicate>
 
 				  <targetDataStore type="Rainbow.Storage.SerializationFileSystemDataStore, Rainbow" physicalRootPath="$(dataFolder)\Unicorn.Bootstrap\$(configurationName)" useDataCache="false" singleInstance="true"/>
-        </configuration>
+				</configuration>
 			</configurations>
 		</unicorn>
 	</sitecore>
