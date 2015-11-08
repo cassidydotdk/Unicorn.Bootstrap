@@ -4,7 +4,7 @@ Utilising [kamsar\Unicorn](https://github.com/kamsar/Unicorn) to auto-install [S
 - Mark Cassidy, November 2015. [@cassidydotdk](https://twitter.com/cassidydotdk), [https://github.com/cassidydotdk](https://github.com/cassidydotdk)
 
 ### For module installers:
-1. Add [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) enabled module to your solution with NuGet Package Manager.
+1. Add [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) ***enabled module (NuGet Package)*** to your solution with NuGet Package Manager. You don't need to add a reference to [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) directly, unless you are creating a Sitecore module.
 2. Start Sitecore
 3. Done.
 
@@ -35,6 +35,9 @@ Utilising [kamsar\Unicorn](https://github.com/kamsar/Unicorn) to auto-install [S
 		</unicorn>
 	  </sitecore>
 	</configuration>
+
+### Caveats
+Make sure to keep your Target Data Store root folder name the same as your configuration name a all times. [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) relies on this, to figure out which configurations to sync at startup. Absolutely make sure your Data Store root folder is unique, but Unicorn should also throw an exception if this is not the case. Place this *alongside* your regular Unicorn storage path, not *inside* it.
 
 ## TL;DR ##
 [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) will install itself as a processor in your `<initialize>` [Sitecore](http://www.sitecore.net) pipeline, and force a sync of all configurations found in `\Unicorn.Bootstrap\`.
