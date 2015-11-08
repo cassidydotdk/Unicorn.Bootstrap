@@ -1,6 +1,8 @@
 # Unicorn.Bootstrap
 Utilising [kamsar\Unicorn](https://github.com/kamsar/Unicorn) to auto-install [Sitecore](http://www.sitecore.net) items automatically when including a [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) enabled NuGet package to your solution.
 
+- Mark Cassidy, November 2015. [@cassidydotdk](https://twitter.com/cassidydotdk), [https://github.com/cassidydotdk](https://github.com/cassidydotdk)
+
 ### For module installers:
 1. Add [Unicorn.Bootstrap](https://github.com/cassidydotdk/Unicorn.Bootstrap) enabled module to your solution with NuGet Package Manager.
 2. Start Sitecore
