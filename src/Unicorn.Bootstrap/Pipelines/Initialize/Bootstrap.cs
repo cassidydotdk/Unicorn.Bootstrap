@@ -29,8 +29,9 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
 
             if (configuration != null)
             {
-                MoveBootstrapToTargetDataStore(directory, GetTargetDataStorePathFromIConfiguration(configuration), configuration);
-                SynchroniseTargetDataStore(configuration);
+                var success = MoveBootstrapToTargetDataStore(directory, GetTargetDataStorePathFromIConfiguration(configuration), configuration);
+                if (success)
+                    SynchroniseTargetDataStore(configuration);
             }
         }
 
@@ -62,7 +63,7 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
             var sourcePath = source.TrimEnd('\\', ' ');
             var targetPath = target.TrimEnd('\\', ' ');
             var files = Directory.EnumerateFiles(sourcePath, "*", SearchOption.AllDirectories)
-                                 .GroupBy(Path.GetDirectoryName);
+                .GroupBy(Path.GetDirectoryName);
             foreach (var folder in files)
             {
                 var targetFolder = folder.Key.Replace(sourcePath, targetPath);
@@ -80,16 +81,38 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
             Directory.Delete(source, true);
         }
 
-        public virtual void MoveBootstrapToTargetDataStore(string directory, string targetDataStorePath, IConfiguration configuration)
+        public virtual bool MoveBootstrapToTargetDataStore(string directory, string targetDataStorePath, IConfiguration configuration)
         {
             var logger = configuration.Resolve<ILogger>();
+
+            if (string.IsNullOrEmpty(directory))
+            {
+                logger.Error("Source directory not specified.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(targetDataStorePath))
+            {
+                logger.Error("targetStoreDataPath directory not specified (or resolved).");
+                return false;
+            }
 
             logger.Info(string.Empty);
             logger.Info($"Bootstrap folder \"{directory}\" being moved to \"{targetDataStorePath}\"");
 
-            if (Directory.Exists(targetDataStorePath))
-                Directory.Delete(targetDataStorePath, true);
-            MoveDirectory(directory, targetDataStorePath);
+            try
+            {
+                if (Directory.Exists(targetDataStorePath))
+                    Directory.Delete(targetDataStorePath, true);
+                MoveDirectory(directory, targetDataStorePath);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return false;
+            }
+
+            return true;
         }
 
         public virtual string GetTargetDataStorePathFromIConfiguration(IConfiguration configuration)
@@ -99,11 +122,6 @@ namespace Unicorn.Bootstrap.Pipelines.Initialize
                 throw new Exception($"targetDatastore undefined in configuration '{configuration.Name}'");
 
             return targetDataStore.GetConfigurationDetails().First(kvp => kvp.Key.Equals("Physical root path")).Value;
-        }
-
-        public virtual IConfiguration[] GetBootstrapConfigurations(string[] configNames)
-        {
-            return ControlPanelUtility.ResolveConfigurationsFromQueryParameter(string.Join("^", configNames));
         }
 
         public virtual string[] GetBootstrapDirectories()
